@@ -10,6 +10,9 @@ inputs:
     default: '.'
   AnacondaToken:
     description: 'Anaconda access Token'
+  channels:
+    description: 'Additional anaconda channels'
+    default: 'conda-forge'
 runs:
   using: 'docker'
   image: 'Dockerfile'
