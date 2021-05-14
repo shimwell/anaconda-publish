@@ -33,6 +33,6 @@ go_to_build_dir
 check_if_meta_yaml_file_exists
 build_package
 # upload package if INPUT_PUBLISH is set to true
-if [ ${INPUT_PUBLISH} = True ]; then
+if [ ${INPUT_PUBLISH} = true ]; then
     upload_package
 fi
