@@ -13,6 +13,9 @@ inputs:
   channels:
     description: 'Additional anaconda channels'
     default: '{conda-forge}'
+  publish:
+    description: 'Whether to publish to anaconda'
+    default: '{false}'
 runs:
   using: 'docker'
   image: 'Dockerfile'
