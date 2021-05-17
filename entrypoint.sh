@@ -19,15 +19,20 @@ check_if_meta_yaml_file_exists() {
 build_package(){
     eval conda build "-c "${INPUT_CHANNELS} --output-folder . .
     conda convert -p osx-64 linux-64/*.tar.bz2
+    conda convert -p win-64 linux-64/*.tar.bz2
 }
 
 upload_package(){
     export ANACONDA_API_TOKEN=$INPUT_ANACONDATOKEN
     anaconda upload --label main linux-64/*.tar.bz2
     anaconda upload --label main osx-64/*.tar.bz2
+    anaconda upload --label main win-64/*.tar.bz2
 }
 
 go_to_build_dir
 check_if_meta_yaml_file_exists
 build_package
-upload_package
+# upload package if INPUT_PUBLISH is set to true
+if [ ${INPUT_PUBLISH} = true ]; then
+    upload_package
+fi
