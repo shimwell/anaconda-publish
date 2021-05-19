@@ -16,6 +16,12 @@ inputs:
   publish:
     description: 'Whether to publish to anaconda'
     default: '{false}'
+  convert_win:
+    description: 'Whether to convert linux build for windows'
+    default: '{true}'
+  convert_osx:
+    description: 'Whether to convert linux build for osx'
+    default: '{true}'
 runs:
   using: 'docker'
   image: 'Dockerfile'
