@@ -58,7 +58,8 @@ check_if_meta_yaml_file_exists
 if  [ ${INPUT_TEST_ALL} = true ]; then
     build_and_test_package
 else
-    build_package
+    # build and test only the specified combination of python and numpy
+    # build_package
     test_package
 fi
 
