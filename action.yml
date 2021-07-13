@@ -22,6 +22,9 @@ inputs:
   convert_osx:
     description: 'Whether to convert linux build for osx'
     default: 'true'
+  build_all:
+    description: 'Whether to build all variants'
+    default: 'false'
   test_all:
     description: 'Whether to build and test all recipe variants'
     default: 'false'
