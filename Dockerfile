@@ -1,12 +1,10 @@
-FROM continuumio/miniconda3:4.7.10
+FROM continuumio/miniconda3:4.10.3p0
 
-LABEL "repository"="https://github.com/m0nhawk/conda-package-publish-action"
+LABEL "repository"="https://github.com/BEFH/conda-package-publish-action"
 LABEL "maintainer"="Andrew Prokhorenkov <andrew.prokhorenkov@gmail.com>"
 
-RUN conda install -y anaconda-client conda-build
-RUN apt-get --allow-releaseinfo-change update
-RUN apt-get install -y build-essential --fix-missing
-RUN apt install -y libgl1-mesa-glx
-
+RUN apt-get --allow-releaseinfo-change update && \
+  apt-get install -y build-essential libgl1-mesa-glx --fix-missing && \
+  conda install -y anaconda-client conda-build
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
