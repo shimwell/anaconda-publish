@@ -15,12 +15,12 @@ For all variants to be built, tested, and (if `publish` is True) published, `tes
 ### Example workflow
 This workflow has the following behaviour:
 
-When pushing to master *all* variants are built and tested.
+When pushing to main *all* variants are built and tested.
 
-- If pushing to master, all variants are built and tested.
+- If pushing to main, all variants are built and tested.
 - If an [annotated](https://git-scm.com/book/en/v2/Git-Basics-Tagging) tag is created, all variants are built, tested and published.
-- If opening or modifying a pull request to master, a single variant is built and tested, but not published.
-- Builds using channels: conda-forge, ccpi, and paskino.
+- If opening or modifying a pull request to main, a single variant is built and tested, but not published.
+- Builds using channels: conda-forge.
 - Builds for linux and conda converts to windows and macOS as well.
 
 ```yaml
@@ -30,11 +30,11 @@ on:
   release:
     types: [published]
   push:
-    branches: [ master ]
+    branches: [ main ]
     tags:
       - '**'
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
     
 jobs:
   build:
@@ -42,13 +42,13 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: publish-to-conda
-      uses: paskino/conda-package-publish-action@master
+      uses: shimwell/conda-package-publish-action@main
       with:
         subDir: 'conda'
-        channels: 'conda-forge -c ccpi -c paskino'
+        channels: '-c fusion-energy'
         AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
         publish: ${{ github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') }}
-        test_all: ${{(github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')) || (github.ref == 'refs/heads/master')}}
+        test_all: ${{(github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')) || (github.ref == 'refs/heads/main')}}
         convert_win: true
         convert_osx: true
 ```
@@ -77,4 +77,4 @@ jobs:
 2. Add it to the Secrets of the Github repository as `ANACONDA_TOKEN`
 
 ### Build Channels
-By Default, this Github Action will search for conda build dependancies (on top of the standard channels) in `conda-forge` and `bioconda`
+By Default, this Github Action will search for conda build dependencies (on top of the standard channels) in `conda-forge` and `bioconda`
