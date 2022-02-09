@@ -45,7 +45,7 @@ jobs:
       uses: shimwell/conda-package-publish-action@main
       with:
         subDir: 'conda'
-        channels: '-c fusion-energy'
+        channels: '-c fusion-energy -c conda-forge'
         AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
         publish: ${{ github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') }}
         test_all: ${{(github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')) || (github.ref == 'refs/heads/main')}}
@@ -78,4 +78,4 @@ jobs:
 2. Add it to the Secrets of the Github repository as `ANACONDA_TOKEN`
 
 ### Build Channels
-By Default, this Github Action will search for conda build dependencies (on top of the standard channels) in `conda-forge` and `bioconda`
+By Default, this Github Action will search for conda build dependencies (on top of the standard channels) in `conda-forge`

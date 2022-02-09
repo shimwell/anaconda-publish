@@ -28,9 +28,6 @@ inputs:
   test_all:
     description: 'Whether to build and test all recipe variants'
     default: 'false'
-  test_pyver:
-    description: 'Default version of Python to test the package with'
-    default: '3.7'
   test_npver:
     description: 'Default version of NumPy to test the package with'
     default: '1.18'

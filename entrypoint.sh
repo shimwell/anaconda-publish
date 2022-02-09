@@ -17,12 +17,8 @@ check_if_meta_yaml_file_exists() {
 }
 
 build_and_test_package(){
-    if  [ ${INPUT_TEST_ALL} = true ]; then
-        eval conda build "--config-file"${INPUT_BUILD_CONFIG} " "${INPUT_CHANNELS} --output-folder . .
-    else
-        # builds and tests one package, with the specified combination of python and numpy
-        eval conda build "--config-file "${INPUT_BUILD_CONFIG} " "${INPUT_CHANNELS} "--python="${INPUT_TEST_PYVER} "--numpy="${INPUT_TEST_NPVER} --output-folder . .
-    fi
+
+    eval conda build "--config-file "${INPUT_BUILD_CONFIG} " "${INPUT_CHANNELS} "--numpy="${INPUT_TEST_NPVER} --output-folder . .
 
     if [ ${INPUT_CONVERT_OSX} = true ]; then
         conda convert -p osx-64 linux-64/*.tar.bz2
