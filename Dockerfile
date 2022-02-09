@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:4.10.3p0
+FROM continuumio/miniconda3:4.10.3p1
 
 LABEL "repository"="https://github.com/BEFH/conda-package-publish-action"
 LABEL "maintainer"="Andrew Prokhorenkov <andrew.prokhorenkov@gmail.com>"
