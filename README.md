@@ -65,6 +65,7 @@ jobs:
 ├── conda
 │   ├── build.sh
 │   └── meta.yaml
+│   └── conda_build_config.yaml
 ├── .github
 │   └── workflows
 │       └── publish_conda.yml

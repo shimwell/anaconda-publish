@@ -4,7 +4,10 @@ author: 'Andrew Prokhorenkov, modified by Maxime Borry, Brian Fulton-Howard and 
 branding:
   icon: 'package'  
   color: 'purple'
-inputs: 
+inputs:
+  build_config:
+    description: path to the conda_build_config.yaml file
+    default: 'conda_build_config.yaml'
   subDir:
     description: 'Sub-directory with conda recipe'
     default: '.'
